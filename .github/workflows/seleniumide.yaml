@@ -1,4 +1,4 @@
-name : SeleniumIDE CI
+name: SeleniumIDE CI
 
 on:
   push:
@@ -7,23 +7,22 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up .Net Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
-    
-    name: Install dependencies
-    run: dotnet restore
+      - name: Set up .Net Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
 
-    name: Build
-    run: dotnet build --no-restore
+      - name: Install dependencies
+        run: dotnet restore
 
-    name: run tests
-    run: dotnet test --verbosity normal
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Run tests
+        run: dotnet test --verbosity normal
